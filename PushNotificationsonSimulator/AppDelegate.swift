@@ -75,4 +75,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate  {
         
         completionHandler([.sound, .alert, .badge])
     }
+    
+    
+      func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                    didReceive response: UNNotificationResponse,
+                                    withCompletionHandler completionHandler: @escaping () -> Void) {
+            switch response.actionIdentifier {
+            case UNNotificationDismissActionIdentifier:
+                print("Dismiss Action")
+            case UNNotificationDefaultActionIdentifier:
+                print("Open Action")
+            case "Snooze":
+                print("Snooze")
+            case "Delete":
+                print("Delete")
+            default:
+                print("default")
+            }
+            completionHandler()
+        }
+    
 }
